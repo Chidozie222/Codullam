@@ -1,0 +1,5 @@
+.heroBg {
+  background: linear-gradient(180deg, #f8fcfa 0%, #f2f9f7 100%);
+}
+
+/* subtle pattern already defined globally, reused here */
