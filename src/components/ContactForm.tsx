@@ -2,73 +2,69 @@
 import React from "react";
 
 export default function ContactForm() {
-   const [formData, setFormData] = React.useState({
-     firstName: "",
-     lastName: "",
-     email: "",
-     idea: "",
-   });
-  
-  type messageType = {
-    type: string,
-    text: string
-  }
-  
-   const [isSubmitting, setIsSubmitting] = React.useState(false);
-   const [message, setMessage] = React.useState<messageType | null>(null);
+  const [formData, setFormData] = React.useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    idea: "",
+  });
 
-   const handleChange = (e: any) => {
-     const { name, value } = e.target;
-     setFormData((prev) => ({ ...prev, [name]: value }));
+  type MessageType = {
+    type: "success" | "error";
+    text: string;
   };
 
-   const handleSubmit = (e: any) => {
-     e.preventDefault();
-     setIsSubmitting(true);
-     setMessage(null);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [message, setMessage] = React.useState<MessageType | null>(null);
 
-     // Simulate form submission success after a delay
-     setTimeout(() => {
-       setIsSubmitting(false);
-       setMessage({ 
-         type: "success",
-         text: "Thank you! Your idea has been submitted. We'll be in touch soon.",
-       });
-       setFormData({
-         firstName: "",
-         lastName: "",
-         email: "",
-         idea: "",
-       });
-     }, 1500);
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
-     // In a real app, you would send this data to a server/Firestore here.
-     console.log("Form Data Submitted:", formData);
-   };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setMessage(null);
+
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setMessage({
+        type: "success",
+        text: "Thank you! Your idea has been submitted. We'll be in touch soon.",
+      });
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        idea: "",
+      });
+    }, 1500);
+
+    console.log("Form Data Submitted:", formData);
+  };
 
   return (
     <section id="contact" className="container mx-auto px-6 py-12">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-16 lg:mt-24">
-        {/* Left Column: Text & Call to Action */}
+        {/* Left Column */}
         <div className="flex flex-col justify-center pr-0 lg:pr-12">
           <h2 className="text-5xl md:text-6xl font-extrabold text-gray-800 leading-tight">
             Give your idea momentum <br className="hidden md:block" /> to go{" "}
             <span className="text-[#049773]">Live</span>
           </h2>
           <p className="mt-6 text-xl text-gray-600 max-w-md">
-            Let's co-create something powerful, Equity-first. We'll bring
-            the tech, you bring the spark.
+            Let&apos;s co-create something powerful, Equity-first. We&apos;ll
+            bring the tech, you bring the spark.
           </p>
         </div>
 
         {/* Right Column: Contact Form */}
         <div className="bg-gray-100 p-8 rounded-xl shadow-lg">
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Form Fields */}
             <div>
-              <label htmlFor="firstName" className="sr-only">
-                First name
-              </label>
               <input
                 type="text"
                 name="firstName"
@@ -82,9 +78,6 @@ export default function ContactForm() {
             </div>
 
             <div>
-              <label htmlFor="lastName" className="sr-only">
-                Last name
-              </label>
               <input
                 type="text"
                 name="lastName"
@@ -98,9 +91,6 @@ export default function ContactForm() {
             </div>
 
             <div>
-              <label htmlFor="email" className="sr-only">
-                Email address
-              </label>
               <input
                 type="email"
                 name="email"
@@ -114,13 +104,10 @@ export default function ContactForm() {
             </div>
 
             <div>
-              <label htmlFor="idea" className="sr-only">
-                Tell us about your idea?
-              </label>
               <textarea
                 name="idea"
                 id="idea"
-                rows="4"
+                rows={4}
                 placeholder="Tell us about your idea..."
                 value={formData.idea}
                 onChange={handleChange}
@@ -129,7 +116,6 @@ export default function ContactForm() {
               ></textarea>
             </div>
 
-            {/* Message Display */}
             {message && (
               <div
                 className={`p-3 rounded-lg text-sm ${
@@ -142,7 +128,6 @@ export default function ContactForm() {
               </div>
             )}
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={isSubmitting}
