@@ -89,7 +89,7 @@ export default function SuccessStories() {
 
           {/* Main Content: Responsive Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {stories.map((story, index) => (
+            {stories.map((story) => (
               <div
                 key={story.name}
                 // Custom, darker green for the card background, with a subtle border and depth

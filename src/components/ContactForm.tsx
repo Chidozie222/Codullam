@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 
 export default function ContactForm() {
    const [formData, setFormData] = React.useState({
@@ -56,7 +56,7 @@ export default function ContactForm() {
             <span className="text-[#049773]">Live</span>
           </h2>
           <p className="mt-6 text-xl text-gray-600 max-w-md">
-            Let's co-create something powerful, **Equity-first**. We'll bring
+            Let's co-create something powerful, Equity-first. We'll bring
             the tech, you bring the spark.
           </p>
         </div>
