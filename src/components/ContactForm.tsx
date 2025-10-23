@@ -8,15 +8,21 @@ export default function ContactForm() {
      email: "",
      idea: "",
    });
+  
+  type messageType = {
+    type: string,
+    text: string
+  }
+  
    const [isSubmitting, setIsSubmitting] = React.useState(false);
-   const [message, setMessage] = React.useState(null);
+   const [message, setMessage] = React.useState<messageType | null>(null);
 
-   const handleChange = (e) => {
+   const handleChange = (e: any) => {
      const { name, value } = e.target;
      setFormData((prev) => ({ ...prev, [name]: value }));
-   };
+  };
 
-   const handleSubmit = (e) => {
+   const handleSubmit = (e: any) => {
      e.preventDefault();
      setIsSubmitting(true);
      setMessage(null);
@@ -24,7 +30,7 @@ export default function ContactForm() {
      // Simulate form submission success after a delay
      setTimeout(() => {
        setIsSubmitting(false);
-       setMessage({
+       setMessage({ 
          type: "success",
          text: "Thank you! Your idea has been submitted. We'll be in touch soon.",
        });
