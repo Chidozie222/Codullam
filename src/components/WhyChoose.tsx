@@ -127,19 +127,30 @@ const IconExpertise = ({ className = "w-6 h-6" }) => (
     },
   ];
 
-  const FeatureCard = ({ icon: Icon, title, description }) => (
-    <div className="flex flex-col items-center text-center p-4">
-      <Icon className="w-8 h-8 mb-4 text-[#049773]" />
-      <h3 className="text-xl font-bold text-gray-800 mb-2">{title}</h3>
-      <p className="text-gray-500 text-sm">{description}</p>
-      <a
-        href="#"
-        className="text-[#049773] hover:text-[#003024] text-sm font-medium mt-2 transition"
-      >
-        Learn more
-      </a>
-    </div>
-  );
+ type FeatureCardProps = {
+   icon: React.ComponentType<{ className?: string }>;
+   title: string;
+   description: string;
+ };
+
+ const FeatureCard: React.FC<FeatureCardProps> = ({
+   icon: Icon,
+   title,
+   description,
+ }) => (
+   <div className="flex flex-col items-center text-center p-4">
+     <Icon className="w-8 h-8 mb-4 text-[#049773]" />
+     <h3 className="text-xl font-bold text-gray-800 mb-2">{title}</h3>
+     <p className="text-gray-500 text-sm">{description}</p>
+     <a
+       href="#"
+       className="text-[#049773] hover:text-[#003024] text-sm font-medium mt-2 transition"
+     >
+       Learn more
+     </a>
+   </div>
+ );
+
   return (
     <section className="container mx-auto px-6 py-12">
       <div className="text-center mb-16">
