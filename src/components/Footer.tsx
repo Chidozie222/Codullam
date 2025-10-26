@@ -1,3 +1,4 @@
+import Image from "next/image";
 export default function Footer() {
   const IconInstagram = ({ className = "w-6 h-6" }) => (
     <svg
@@ -5,7 +6,7 @@ export default function Footer() {
       className={className}
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
+      stroke="#DDFA6C"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -22,7 +23,7 @@ export default function Footer() {
       className={className}
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
+      stroke="#DDFA6C"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -38,7 +39,7 @@ export default function Footer() {
       className={className}
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
+      stroke="#DDFA6C"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -61,6 +62,8 @@ export default function Footer() {
       { name: "Terms & Conditions", href: "#" },
     ],
   };
+
+  const logoSrcWhite = "/Codullam Logo.png";
   return (
     <footer className="bg-[#003024] text-white pt-16 pb-6 mt-20">
       <div className="container mx-auto px-6 max-w-6xl">
@@ -68,25 +71,14 @@ export default function Footer() {
           {/* Logo and Social */}
           <div className="md:col-span-2 lg:col-span-2 space-y-6">
             <div className="flex items-center space-x-3">
-              {/* Logo SVG - simplified based on image, assuming a custom 'O' like element */}
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 100 100"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Simplified green circle pattern */}
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="45"
-                  stroke="#90EE90"
-                  strokeWidth="10"
-                />
-                <circle cx="50" cy="50" r="20" fill="#90EE90" />
-              </svg>
-              <span className="text-3xl font-bold text-white">Codullam</span>
+              <Image
+                src={logoSrcWhite}
+                alt="codullam Logo"
+                width={40}
+                height={40}
+                className="w-10 h-10 object-contain"
+              />
+              <span className="text-3xl font-bold text-[#DDFA6C]">Codullam</span>
             </div>
 
             <div className="flex space-x-3">
