@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+// import { Head } from "next/document";
 
 export const metadata = {
   title: "Codullam",
@@ -14,6 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+        <link rel="icon" href="/Codullam Logo.png" />
       <body className="antialiased text-slate-900">
         <Navbar />
         <main>{children}</main>
